@@ -1,5 +1,8 @@
-*{
-    font-family: sans-serif;
+* {
+  font-family: 'Arial', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 .split {
@@ -11,15 +14,18 @@
   overflow-x: hidden;
   padding-top: 20px;
 }
-  
+
 .left {
   left: 0;
+  background: linear-gradient(135deg, #D3D3D3, #D3D3D3);
+  color: #fff;
 }
 
 .right {
   right: 0;
+  background: linear-gradient(135deg, #DCDCDC, #DCDCDC);
+  color: #fff;
 }
-
 
 .centered {
   position: absolute;
@@ -28,26 +34,92 @@
   transform: translate(-50%, -50%);
   text-align: center;
 }
-  
+
 .centered img {
   width: 100%;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
-
 
 textarea {
   width: 100%;
   height: 100px;
   padding: 12px 20px;
-  box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  background-color: #f8f8f8;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  background-color: #fff;
   font-size: 16px;
+  color: #333;
   resize: none;
+  margin-bottom: 10px;
 }
 
-.comments {
-  text-decoration: underline;
-  text-underline-position: under;
+textarea::placeholder {
+  color: #aaa;
+}
+
+.review-form button {
+  background-color: #000080;
+  width: 100%;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
   cursor: pointer;
+}
+
+.review-form button:hover {
+  background-color: #4169E1;
+}
+
+.info {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+.info p {
+  margin: 5px 0;
+}
+
+.comments-section {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.comment {
+  margin-bottom: 10px;
+  color: #2F4F4F;
+}
+
+.comment p {
+  margin: 0;
+}
+
+hr {
+  border: 1px solid #ddd;
+}
+
+.positive-label {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.negative-label {
+  color: #f44336;
+  font-weight: bold;
+}
+
+.positive-comment {
+  color: #006400; /* Green for positive */
+  font-weight: bold;
+}
+
+.negative-comment {
+  color: #FF4500; /* Red for negative */
+  font-weight: bold;
 }

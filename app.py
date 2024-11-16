@@ -1,4 +1,4 @@
-from flask import Flask, render_template,request, redirect
+from flask import Flask, render_template, request, redirect
 from helper import preprocessing, vectorizer, get_prediction
 from logger import logging
 
@@ -13,6 +13,7 @@ negative = 0
 
 @app.route("/")
 def index():
+    # Prepare data to pass to the frontend
     data['reviews'] = reviews
     data['positive'] = positive
     data['negative'] = negative
@@ -21,11 +22,12 @@ def index():
 
     return render_template('index.html', data=data)
 
-@app.route("/", methods = ['post'])
+@app.route("/", methods=['POST'])
 def my_post():
     text = request.form['text']
     logging.info(f'Text : {text}')
 
+    # Preprocess, vectorize, and predict sentiment
     preprocessed_txt = preprocessing(text)
     logging.info(f'Preprocessed Text : {preprocessed_txt}')
 
@@ -35,14 +37,17 @@ def my_post():
     prediction = get_prediction(vectorized_txt)
     logging.info(f'Prediction : {prediction}')
 
+    # Update sentiment counts
+    global positive, negative
     if prediction == 'negative':
-        global negative
         negative += 1
     else:
-        global positive
         positive += 1
-    
-    reviews.insert(0, text)
+
+    # Add the review and its sentiment to the reviews list
+    reviews.insert(0, {"text": text, "sentiment": prediction})
+    logging.info(f'Reviews Updated: {reviews}')
+
     return redirect(request.url)
 
 if __name__ == "__main__":
